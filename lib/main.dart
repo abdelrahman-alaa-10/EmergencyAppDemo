@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'videocall.dart';
+import 'routes.dart';
 
-void main() {
+void main() 
+{
   runApp(const MyApp());
 }
 
+/// The App Widget
 class MyApp extends StatelessWidget 
 {
   const MyApp({super.key});
@@ -20,8 +23,9 @@ class MyApp extends StatelessWidget
         useMaterial3: true,
       ),
       home: const HomeScreen(),
-      routes: {
-        '/video_call':(context) => const VideoCall(),
+      routes: 
+      {
+        Routes.videoCallRoute: (context) => const VideoCall(),
       },
     );
   }
@@ -40,7 +44,7 @@ class HomeScreen extends StatelessWidget
       body: Center(
         child: ElevatedButton(
           onPressed: () {
-            Navigator.pushNamed(context, '/video_call'); // Navigate to VideoCall screen
+            Navigator.pushNamed(context, Routes.videoCallRoute); // Navigate to VideoCall screen
           },
           child: const Text('Start Video Call'),
         ),
