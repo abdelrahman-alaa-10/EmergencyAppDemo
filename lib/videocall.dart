@@ -1,7 +1,17 @@
+import 'dart:nativewrappers/_internal/vm/lib/internal_patch.dart';
 import 'package:flutter/material.dart';
 import 'package:agora_rtc_engine/agora_rtc_engine.dart';
 import 'credentials.dart';
+import 'package:logger/logger.dart';
+import 'logoutput.dart';
+import 'dart:io';
 
+final File logFile = File('app.log');
+
+final logger = Logger(
+  printer: PrettyPrinter(),
+  output: FileLogOutput(logFile),
+);
 class VideoCall extends StatefulWidget 
 {
   const VideoCall({super.key});
@@ -30,7 +40,9 @@ class _VideoCallState extends State<VideoCall>
     await rtcEngine.enableVideo();
     rtcEngine.registerEventHandler(RtcEngineEventHandler(
       onJoinChannelSuccess: (RtcConnection connection, int elapsed) {
+        printToConsole("************************************");
         print('joinChannelSuccess ${connection.channelId} ${connection.localUid}');
+        printToConsole("************************************");
       },
       onUserJoined: (RtcConnection connection, int remoteUid, int elapsed) {
         print('userJoined $remoteUid');

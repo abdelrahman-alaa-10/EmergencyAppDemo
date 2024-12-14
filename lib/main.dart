@@ -46,7 +46,7 @@ class HomeScreen extends StatelessWidget
           onPressed: () {
             Navigator.pushNamed(context, Routes.videoCallRoute); // Navigate to VideoCall screen
           },
-          child: const Text('Start Video Call'),
+          child: const Text('Call'),
         ),
       ),
     );
