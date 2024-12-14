@@ -2,21 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 
-void main() => runApp(MyApp());
-
-class MyApp extends StatelessWidget {
+class DoctorPage extends StatefulWidget 
+{
+  const DoctorPage({super.key});
+  
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: DoctorPage(),
-    );
-  }
-}
-
-class DoctorPage extends StatefulWidget {
-  @override
-  _DoctorPageState createState() => _DoctorPageState();
+  State<DoctorPage> createState() => _DoctorPageState();
 }
 
 class _DoctorPageState extends State<DoctorPage> {

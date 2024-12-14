@@ -1,24 +1,15 @@
-// Import necessary packages
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: InstructionPage(),
-    );
-  }
-}
 
 /// This class is created for instruction & call page that user
 /// should interact with (in case of emergency situation without sign in)
 // Instruction and Video Call Page
-class InstructionPage extends StatefulWidget {
+class InstructionPage extends StatefulWidget 
+{
+  const InstructionPage({super.key});
+  
   @override
-  _InstructionPageState createState() => _InstructionPageState();
+  State<InstructionPage> createState() => _InstructionPageState();
 }
 
 class _InstructionPageState extends State<InstructionPage> {

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'videocall.dart';
 import 'routes.dart';
+import 'specialist_page.dart';
+import 'instruction_call_page.dart';
 
 void main() 
 {
@@ -17,6 +19,7 @@ class MyApp extends StatelessWidget
   Widget build(BuildContext context) 
   {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Emergency App',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
@@ -26,6 +29,8 @@ class MyApp extends StatelessWidget
       routes: 
       {
         Routes.videoCallRoute: (context) => const VideoCall(),
+        Routes.specialistPageRoute : (context) => const DoctorPage(),
+        Routes.instructionsRoute : (context) => const InstructionPage()
       },
     );
   }
@@ -42,11 +47,28 @@ class HomeScreen extends StatelessWidget
         title: const Text('Emergency App'),
       ),
       body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            Navigator.pushNamed(context, Routes.videoCallRoute); // Navigate to VideoCall screen
-          },
-          child: const Text('Call'),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // Emergency Call
+            ElevatedButton(
+              onPressed: (){
+                Navigator.pushNamed(context, Routes.videoCallRoute);
+              }, child: const Text("Emergency Call"),
+            ),
+            // Specialist Button
+            ElevatedButton(
+              onPressed: (){
+                Navigator.pushNamed(context, Routes.specialistPageRoute);
+              }, child: const Text("I am a Doctor"),
+            ),
+            // Instructions Button
+            ElevatedButton(
+              onPressed: (){
+                Navigator.pushNamed(context, Routes.instructionsRoute);
+              }, child: const Text("Emergency Instructions"),
+            )
+          ],
         ),
       ),
     );
