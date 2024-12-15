@@ -34,7 +34,8 @@ class _VideoCallState extends State<VideoCall>
     initializeAgora();
   }
 
-  Future<void> initializeAgora() async {
+  Future<void> initializeAgora() async 
+  {
     await rtcEngine.initialize(RtcEngineContext(appId: appId));
     await rtcEngine.enableVideo();
     rtcEngine.registerEventHandler(RtcEngineEventHandler(
