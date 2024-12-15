@@ -1,4 +1,3 @@
-import 'dart:nativewrappers/_internal/vm/lib/internal_patch.dart';
 import 'package:flutter/material.dart';
 import 'package:agora_rtc_engine/agora_rtc_engine.dart';
 import 'credentials.dart';
@@ -40,15 +39,13 @@ class _VideoCallState extends State<VideoCall>
     await rtcEngine.enableVideo();
     rtcEngine.registerEventHandler(RtcEngineEventHandler(
       onJoinChannelSuccess: (RtcConnection connection, int elapsed) {
-        printToConsole("************************************");
-        print('joinChannelSuccess ${connection.channelId} ${connection.localUid}');
-        printToConsole("************************************");
+        logger.i('joinChannelSuccess ${connection.channelId} ${connection.localUid}');
       },
       onUserJoined: (RtcConnection connection, int remoteUid, int elapsed) {
-        print('userJoined $remoteUid');
+        logger.i('userJoined $remoteUid');
       },
       onUserOffline: (RtcConnection connection, int remoteUid, UserOfflineReasonType reason) {
-        print('userOffline $remoteUid');
+        logger.i('userOffline $remoteUid');
       },
     ));
     await rtcEngine.joinChannel(token: token, channelId: channelName, uid: 0, options: ChannelMediaOptions());
@@ -61,7 +58,8 @@ class _VideoCallState extends State<VideoCall>
         title: const Text('Video Call'),
       ),
       body: Stack(
-        children: [
+        children: 
+        [
           _renderLocalPreview(),
           _renderRemoteVideo(),
         ],
